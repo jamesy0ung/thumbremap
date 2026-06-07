@@ -3,8 +3,8 @@ import Cocoa
 guard AXIsProcessTrusted() else { print("Need Accessibility permission"); exit(1) }
 
 enum ScrollState { case idle, active }
-var state: ScrollState = .idle
-var idleTimer: Timer?
+nonisolated(unsafe) var state: ScrollState = .idle
+nonisolated(unsafe) var idleTimer: Timer?
 let idleTimeout: TimeInterval = 0.08
 
 let mask = CGEventMask(1 << CGEventType.scrollWheel.rawValue)
